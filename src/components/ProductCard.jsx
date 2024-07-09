@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product, onAddToCart }) => {
   const [quantity, setQuantity] = useState(1);
@@ -20,12 +21,14 @@ const ProductCard = ({ product, onAddToCart }) => {
   };
 
   return (
-    <div className="border rounded-lg p-4 shadow-lg flex flex-col justify-between">
-      <img
-        src={product.imageUrl}
-        alt={product.title}
-        className="w-full h-48 object-cover mb-4 rounded"
-      />
+    <div className="border rounded-lg p-4 shadow-lg flex flex-col justify-between h-full">
+      <Link to={`/product/${product.productId}}`} state={{ product }}>
+        <img
+          src={product.imageUrl}
+          alt={product.title}
+          className="w-full h-48 object-cover mb-4 rounded"
+        />
+      </Link>
       <h2 className="text-lg font-semibold mb-2">{`${product.productCode} - ${product.title}`}</h2>
       <p className="text-gray-700 mb-2">${product.price}</p>
       <p className="text-gray-500 mb-4">Stock: {product.stock}</p>

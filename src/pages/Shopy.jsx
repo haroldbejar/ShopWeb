@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Routes, Route, useLocation, Link } from "react-router-dom";
+import { Routes, Route, useLocation, matchPath } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import ProductList from "../components/ProductList";
 import Cart from "../components/Cart";
@@ -11,6 +11,7 @@ import {
 } from "../redux/slices/productSlice";
 import { addToCart } from "../redux/slices/cartSlice";
 import OrderPayment from "../components/OrderPayment";
+import ProductDetails from "../components/ProductDetails";
 
 const Shopy = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -73,12 +74,14 @@ const Shopy = () => {
               }
             />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
           </Routes>
         </div>
-        {location.pathname !== "/cart" ? (
-          <Aside onCategoryChange={handleCategoryChange} />
-        ) : (
+        {location.pathname === "/cart" ||
+        matchPath("/product/:id", location.pathname) ? (
           <OrderPayment />
+        ) : (
+          <Aside onCategoryChange={handleCategoryChange} />
         )}
       </div>
     </div>
