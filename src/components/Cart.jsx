@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FaTrash } from "react-icons/fa";
 import { decreaseQuantity, removeFromCart } from "../redux/slices/cartSlice";
