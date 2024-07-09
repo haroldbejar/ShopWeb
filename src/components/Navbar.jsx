@@ -1,4 +1,3 @@
-import React from "react";
 import { FaUser, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
