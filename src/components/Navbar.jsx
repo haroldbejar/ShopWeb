@@ -6,7 +6,7 @@ const Navbar = ({ onSearch, cartCount }) => {
   return (
     <nav className="bg-gray-800 p-4 flex justify-between items-center">
       <div className="text-white font-bold text-xl">
-        <a href="/">Shopy</a>
+        <a>Shopy</a>
       </div>
       <div className="flex-grow mx-4 max-w-lg w-full">
         <input

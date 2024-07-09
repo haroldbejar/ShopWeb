@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { addToCart } from "../redux/slices/cartSlice";
+import { useDispatch } from "react-redux";
 
 const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
 
   const location = useLocation();
+  const dispatch = useDispatch();
   const { product } = location.state;
 
   const handleIncrease = () => {
@@ -17,6 +20,10 @@ const ProductDetails = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addToCart({ ...product, quantity }));
   };
 
   return (
@@ -62,7 +69,10 @@ const ProductDetails = () => {
                 +
               </button>
             </div>
-            <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-300">
+            <button
+              onClick={handleAddToCart}
+              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-300"
+            >
               Añadir al carrito
             </button>
           </div>
